@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}COVID - France{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <div class="container text-center p-3">
+            <h1 class="text-center" style="font-family: 'DM Serif Display', serif; color: #0a043c">COVID-19 en France - Source : {{ data.FranceGlobalLiveData.0.sourceType }}</h1>
+            <div class="row p-5">
+                <h3 class="text-center mt-5">Données France - globales ({{ data.FranceGlobalLiveData.0.date }})</h3>
+                <div class="col">
+                   <i class="fas fa-virus fa-4x p-1" style="color: #a3ddcb"></i>
+                    <strong class="d-block number">Cas confirmés : {{ data.FranceGlobalLiveData.0.casConfirmes }}</strong>
+                </div>
+
+                <div class="col">
+                    <i class="fas fa-heart fa-4x p-1" style="color: #a3ddcb"></i>
+                    <strong class="d-block number">Guéris : {{ data.FranceGlobalLiveData.0.gueris }}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="container text-white">
+            {{ render_chart(chartCas) }}
+        </div>
+
+        <div class="container text-center">
+            <div class="row p-5">
+                <h3 class="text-center mt-5">Données France - Hospitalières</h3>
+                <div class="col">
+                    <i class="fas fa-procedures fa-4x p-1" style="color: #a3ddcb"></i>
+                    <strong class="d-block number">Hospitalisés : {{ data.FranceGlobalLiveData.0.hospitalises }}</strong>
+                </div>
+                <div class="col">
+                    <i class="fas fa-heartbeat fa-4x p-1" style="color: #a3ddcb"></i>
+                    <strong class="d-block number">Réanimations : {{ data.FranceGlobalLiveData.0.reanimation }}</strong>
+                </div>
+
+                <div class="col">
+                    <i class="fas fa-heart-broken fa-4x p-1" style="color: #a3ddcb"></i>
+                    <strong class="d-block number">Décès : {{ data.FranceGlobalLiveData.0.deces }}</strong>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container text-white">
+            {{ render_chart(chart) }}
+        </div>
+    </div>
+    <style>
+        body{
+            background-color: #EEFBFB;
+        }
+
+        .row strong{
+            color: #03506f;
+        }
+    </style>
+{% endblock %}
